@@ -1,6 +1,6 @@
 {
   "name": "Navakholo TerraHub Initiative",
-  "short_name": "NTI Hub",
+  "short_name": "NTI",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
