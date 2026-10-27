@@ -145,7 +145,7 @@
 
     <header>
         <div class="brand">
-            <img src="nti-logo.jpg" alt="NTI Logo" class="logo-sm">
+            <img src="icons/nti-logo.jpg" alt="NTI Logo" class="logo-sm">
             <div class="brand-text">
                 <h1>Navakholo TerraHub</h1>
                 <span>GLOBAL TECH INITIATIVE</span>
@@ -157,7 +157,7 @@
     <div class="card">
         <div class="badge-official">Navakholo TerraHub</div>
         <div class="portal-header">
-            <img src="nti-logo.jpg" alt="NTI" class="portal-logo">
+            <img src="icons/nti-logo.jpg" alt="NTI" class="portal-logo">
             <div>
                 <div class="portal-title">See More About NTI</div>
                 <div class="portal-sub">Explore blueprints, vision & community impact</div>
@@ -187,7 +187,7 @@
     <div class="card">
         <div class="badge-exam">Exam Assistant</div>
         <div class="portal-header">
-            <img src="Sarah.jpg" alt="Sarah" class="portal-logo" style="border-color:#38bdf8;">
+            <img src="public/Sarah.jpg" alt="Sarah" class="portal-logo" style="border-color:#38bdf8;">
             <div>
                 <div class="portal-title">Ezrelyn Proctor AI</div>
                 <div class="portal-sub">Prep & practice for final exams with smart AI feedback.</div>
@@ -204,12 +204,12 @@
         
         <div class="founders-grid">
             <div class="founder-card">
-                <img src="ezra.jpg" alt="Ezra Wanyama" class="founder-img">
+                <img src="public/ezra.jpg" alt="Ezra Wanyama" class="founder-img">
                 <div class="founder-name">Ezra Wanyama</div>
                 <div class="founder-role">Co-Creator / Lead Dev</div>
             </div>
             <div class="founder-card">
-                <img src="brian.jpg" alt="Brian" class="founder-img">
+                <img src="public/brian.jpg" alt="Brian" class="founder-img">
                 <div class="founder-name">Brian</div>
                 <div class="founder-role">Co-Creator / Coordinator</div>
             </div>
@@ -236,7 +236,7 @@
     </div>
 
     <div id="wakeOverlay" class="wake-overlay">
-        <img src="nti-logo.jpg" alt="NTI Pulsing Logo" class="pulse-logo">
+        <img src="icons/nti-logo.jpg" alt="NTI Pulsing Logo" class="pulse-logo">
         <div class="wake-title">WAKING UP RENDER ENGINE...</div>
         <div class="wake-sub">Establishing connection to NTI & Ezrelyn cloud servers. Please hold on! ⚡</div>
     </div>
@@ -296,7 +296,7 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
-                    .then((reg) => console.log('NTI Hub SW registered for GitHub Pages!', reg.scope));
+                    .then((reg) => console.log('NTI Hub SW registered successfully!', reg.scope));
             });
         }
     </script>
