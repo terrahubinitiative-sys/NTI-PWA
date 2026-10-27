@@ -164,10 +164,10 @@
                 <div class="portal-sub">Explore blueprints, vision & community impact</div>
             </div>
         </div>
-        <a href="#" onclick="wakeAndOpen('https://blueprints4nti.onrender.com/')" class="gold-btn">
+        <a href="#" onclick="wakeAndOpen('https://blueprints4nti.onrender.com/'); return false;" class="gold-btn">
             🚀 See More About NTI
         </a>
-        <a href="#" onclick="wakeAndOpen('https://nti-com.onrender.com')" class="dark-btn">
+        <a href="#" onclick="wakeAndOpen('https://nti-com.onrender.com'); return false;" class="dark-btn">
             🎓 Join NTI
         </a>
     </div>
@@ -194,7 +194,7 @@
                 <div class="portal-sub">Prep & practice for final exams with smart AI feedback.</div>
             </div>
         </div>
-        <a href="#" onclick="wakeAndOpen('https://ezrelyn-ai-proctor-system.onrender.com')" class="blue-btn">
+        <a href="#" onclick="wakeAndOpen('https://ezrelyn-ai-proctor-system.onrender.com'); return false;" class="blue-btn">
             🧠 Launch Ezrelyn Proctor AI
         </a>
     </div>
@@ -241,6 +241,7 @@
         <div class="wake-title">WAKING UP RENDER ENGINE...</div>
         <div class="wake-sub">Establishing connection to cloud server. Please hold on! ⚡</div>
         <div id="wakeTimer" class="wake-timer">Time Elapsed: 0s</div>
+        <button class="custom-modal-btn" style="margin-top:15px; background:#27272a; color:#f8fafc;" onclick="forceOpenNow()">Force Open Now 🚀</button>
     </div>
 
     <script>
@@ -255,7 +256,7 @@
             document.getElementById('modalTitle').innerText = "✉️ Contact Navakholo TerraHub";
             document.getElementById('modalText').innerHTML = "Reach out directly to the founders via official email:<br><br><b style='color:#38bdf8; font-size:14px;'>jm8831451@gmail.com</b>";
             document.getElementById('modalActionContainer').innerHTML = '<a href="mailto:jm8831451@gmail.com" class="custom-modal-btn" style="text-decoration:none; display:inline-block; margin-right:8px;">Send Email</a> <button class="custom-modal-btn" style="background:#27272a; color:#f8fafc;" onclick="closeCustomModal()">Close</button>';
-            document.getElementById('customModal'].classList.add('active');
+            document.getElementById('customModal').classList.add('active');
         }
 
         function closeCustomModal() {
@@ -263,52 +264,53 @@
         }
 
         let wakeInterval = null;
-        let pingInterval = null;
+        let activeTargetUrl = "";
         let secondsElapsed = 0;
 
         function wakeAndOpen(targetUrl) {
+            activeTargetUrl = targetUrl;
             const overlay = document.getElementById('wakeOverlay');
             const timerEl = document.getElementById('wakeTimer');
             overlay.classList.add('active');
             
             secondsElapsed = 0;
-            timerEl.innerText = `Time Elapsed: 0s (Waking server...)`;
+            timerEl.innerText = `Time Elapsed: 0s (Connecting...)`;
 
-            // Start live counter
             if (wakeInterval) clearInterval(wakeInterval);
             wakeInterval = setInterval(() => {
                 secondsElapsed++;
                 timerEl.innerText = `Time Elapsed: ${secondsElapsed}s (Connecting...)`;
+                
+                // Auto-force unlock after 6 seconds if network blocks fetch ping
+                if (secondsElapsed >= 6) {
+                    successWakeUp();
+                }
             }, 1000);
 
-            // Server ping loop
-            const pingServer = async () => {
-                try {
-                    await fetch(targetUrl, { mode: 'no-cors', cache: 'no-store' });
-                    // If fetch succeeds, server is awake!
-                    successWakeUp(targetUrl);
-                } catch (e) {
-                    // Still waking up
-                }
-            };
-
-            // Ping immediately and then every 2.5 seconds
-            setTimeout(pingServer, 500);
-            if (pingInterval) clearInterval(pingInterval);
-            pingInterval = setInterval(pingServer, 2500);
+            // Trigger background fetch ping safely
+            fetch(targetUrl, { mode: 'no-cors', cache: 'no-store' }).then(() => {
+                successWakeUp();
+            }).catch(() => {
+                // Even if CORS blocks, fallback timer handles it smoothly
+            });
         }
 
-        function successWakeUp(targetUrl) {
+        function successWakeUp() {
             if (wakeInterval) clearInterval(wakeInterval);
-            if (pingInterval) clearInterval(pingInterval);
 
             const timerEl = document.getElementById('wakeTimer');
-            timerEl.innerText = `Server Awake in ${secondsElapsed}s! Launching... 🚀`;
+            timerEl.innerText = `Connected! Launching... 🚀`;
 
             setTimeout(() => {
                 document.getElementById('wakeOverlay').classList.remove('active');
-                window.open(targetUrl, '_blank');
-            }, 800);
+                if (activeTargetUrl) {
+                    window.open(activeTargetUrl, '_blank');
+                }
+            }, 500);
+        }
+
+        function forceOpenNow() {
+            successWakeUp();
         }
 
         const quotes = [
@@ -335,7 +337,7 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
-                    .then((reg) => console.log('NTI Hub SW registered successfully!', reg.scope));
+                    .then((reg) => console.log('NTI Hub SW registered successfully!'));
             });
         }
     </script>
