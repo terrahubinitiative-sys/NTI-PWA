@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Navakholo TerraHub Initiative</title>
+    <!-- Google Site Verification for Web Indexing -->
+    <meta name="google-site-verification" content="KnK7fMRavFEkhzW_yI5F8W7LAt7twSg7p9Aj5OWXHwc" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            width: 100%; min-height: 100vh; background: #000000; color: #f8fafc;
+            font-family: 'Times New Roman', Times, serif; font-size: 13px;
+            padding: 8px; overflow-x: hidden;
+        }
+        header {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #09090b; padding: 10px 14px; border-radius: 14px;
+            border: 1px solid rgba(234, 179, 8, 0.4);
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.15);
+            margin-bottom: 12px;
+        }
+        .brand { display: flex; align-items: center; gap: 10px; }
+        .logo-sm {
+            width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
+            border: 2px solid #eab308; box-shadow: 0 0 10px rgba(234, 179, 8, 0.6);
+        }
+        .brand-text h1 { font-size: 13px; font-weight: bold; color: #ffffff; font-family: 'Times New Roman', Times, serif; }
+        .brand-text span { font-size: 10px; color: #facc15; font-family: 'Times New Roman', Times, serif; letter-spacing: 0.5px; }
+        .menu-btn {
+            background: #18181b; border: 1px solid rgba(234, 179, 8, 0.6);
+            color: #facc15; width: 36px; height: 36px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer;
+            box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+        }
+        .menu-btn:active { transform: scale(0.95); }
+
+        .card {
+            background: #09090b; border: 1px solid #1e293b; border-radius: 14px;
+            padding: 14px; margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        .badge-official {
+            background: rgba(234, 179, 8, 0.15); border: 1px solid rgba(234, 179, 8, 0.4);
+            color: #facc15; padding: 2px 8px; border-radius: 6px; font-size: 10px;
+            font-weight: bold; display: inline-block; margin-bottom: 8px; text-transform: uppercase;
+        }
+        .badge-exam {
+            background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8; padding: 2px 8px; border-radius: 6px; font-size: 10px;
+            font-weight: bold; display: inline-block; margin-bottom: 8px; text-transform: uppercase;
+        }
+        
+        .portal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .portal-logo { width: 36px; height: 36px; border-radius: 8px; object-fit: cover; border: 1px solid #eab308; }
+        .portal-title { font-size: 14px; font-weight: bold; color: #fff; }
+        .portal-sub { font-size: 11px; color: #94a3b8; }
+
+        .gold-btn {
+            display: block; width: 100%; background: linear-gradient(135deg, #ca8a04, #eab308);
+            color: #000000; border: none; padding: 11px; border-radius: 10px; font-weight: bold;
+            font-size: 13px; cursor: pointer; text-align: center; text-decoration: none;
+            font-family: 'Times New Roman', Times, serif; box-shadow: 0 0 15px rgba(234, 179, 8, 0.3);
+            margin-bottom: 8px;
+        }
+        .gold-btn:active { transform: scale(0.98); }
+
+        .dark-btn {
+            display: block; width: 100%; background: linear-gradient(135deg, #18181b, #27272a);
+            color: #f8fafc; border: 1px solid #3f3f46; padding: 11px; border-radius: 10px; font-weight: bold;
+            font-size: 13px; cursor: pointer; text-align: center; text-decoration: none;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .blue-btn {
+            display: block; width: 100%; background: linear-gradient(135deg, #0284c7, #38bdf8);
+            color: #000000; border: none; padding: 11px; border-radius: 10px; font-weight: bold;
+            font-size: 13px; cursor: pointer; text-align: center; text-decoration: none;
+            font-family: 'Times New Roman', Times, serif; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .silicon-row { display: flex; justify-content: space-between; align-items: center; }
+        .silicon-title { font-size: 13px; font-weight: bold; color: #facc15; }
+        .silicon-sub { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+        .silicon-value { font-size: 16px; font-weight: bold; color: #38bdf8; text-align: right; }
+        .silicon-label { font-size: 9px; color: #94a3b8; text-transform: uppercase; }
+
+        .section-tag { text-align: center; font-size: 11px; color: #facc15; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+        .founders-grid { display: flex; gap: 10px; margin-top: 8px; }
+        .founder-card {
+            flex: 1; background: #121216; border: 1px solid #27272a; border-radius: 10px; padding: 10px; text-align: center;
+        }
+        .founder-img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 2px solid #eab308; margin: 0 auto 6px auto; display: block; }
+        .founder-name { font-size: 12px; font-weight: bold; color: #fff; }
+        .founder-role { font-size: 10px; color: #94a3b8; }
+
+        .custom-modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); z-index: 999; justify-content: center; align-items: center; padding: 16px;
+        }
+        .custom-modal.active { display: flex; }
+        .custom-modal-content {
+            background: #09090b; border: 1px solid #eab308; border-radius: 16px;
+            padding: 20px; max-width: 360px; width: 100%; text-align: center;
+            box-shadow: 0 0 25px rgba(234, 179, 8, 0.3);
+        }
+        .custom-modal-title { font-size: 15px; font-weight: bold; color: #facc15; margin-bottom: 10px; }
+        .custom-modal-text { font-size: 13px; color: #e4e4e7; margin-bottom: 16px; line-height: 1.5; }
+        .custom-modal-btn {
+            background: linear-gradient(135deg, #ca8a04, #eab308); color: #000; border: none;
+            padding: 8px 20px; border-radius: 8px; font-weight: bold; font-size: 13px; cursor: pointer; text-decoration: none; display: inline-block;
+        }
+
+        .wake-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.95); z-index: 1000; flex-direction: column; justify-content: center; align-items: center; padding: 20px; text-align: center;
+        }
+        .wake-overlay.active { display: flex; }
+        
+        .pulse-logo {
+            width: 80px; height: 80px; border-radius: 50%; object-fit: cover;
+            border: 3px solid #38bdf8; box-shadow: 0 0 30px #38bdf8;
+            margin-bottom: 20px; animation: pulseGlow 1.5s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(0.95); box-shadow: 0 0 10px #38bdf8; }
+            100% { transform: scale(1.05); box-shadow: 0 0 30px #38bdf8, 0 0 50px #ca8a04; }
+        }
+        .wake-title { font-size: 16px; font-weight: bold; color: #38bdf8; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .wake-sub { font-size: 12px; color: #94a3b8; max-width: 280px; line-height: 1.4; }
+
+        .quotes-card {
+            background: linear-gradient(135deg, #09090b, #18181b);
+            border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 12px;
+            padding: 12px; margin-top: 14px; margin-bottom: 12px; text-align: center;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+        }
+        .quotes-title { font-size: 10px; text-transform: uppercase; color: #38bdf8; font-weight: bold; letter-spacing: 1px; margin-bottom: 4px; }
+        .quotes-text { font-size: 12px; color: #fef08a; font-style: italic; min-height: 32px; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <img src="nti-logo.jpg" alt="NTI Logo" class="logo-sm">
+            <div class="brand-text">
+                <h1>Navakholo TerraHub</h1>
+                <span>GLOBAL TECH INITIATIVE</span>
+            </div>
+        </div>
+        <div class="menu-btn" onclick="openEmailModal()">✉️</div>
+    </header>
+
+    <div class="card">
+        <div class="badge-official">Navakholo TerraHub</div>
+        <div class="portal-header">
+            <img src="nti-logo.jpg" alt="NTI" class="portal-logo">
+            <div>
+                <div class="portal-title">See More About NTI</div>
+                <div class="portal-sub">Explore blueprints, vision & community impact</div>
+            </div>
+        </div>
+        <a href="#" onclick="wakeAndOpen('https://blueprints4nti.onrender.com/')" class="gold-btn">
+            🚀 See More About NTI
+        </a>
+        <a href="#" onclick="wakeAndOpen('https://nti-com.onrender.com')" class="dark-btn">
+            🎓 Join NTI
+        </a>
+    </div>
+
+    <div class="card" onclick="showCustomModal('Navakholo Silicon Valley', 'The ultimate tech incubation and innovation hub founded in Kakamega & Nakuru, Kenya. Building digital solutions from scratch to global scale!')" style="cursor:pointer;">
+        <div class="silicon-row">
+            <div>
+                <div class="silicon-title">⚡ Navakholo Silicon Valley</div>
+                <div class="silicon-sub">Tap to view local tech hub metrics & nodes</div>
+            </div>
+            <div>
+                <div class="silicon-value">ACTIVE 🚀</div>
+                <div class="silicon-label">Hub Status</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="badge-exam">Exam Assistant</div>
+        <div class="portal-header">
+            <img src="Sarah.jpg" alt="Sarah" class="portal-logo" style="border-color:#38bdf8;">
+            <div>
+                <div class="portal-title">Ezrelyn Proctor AI</div>
+                <div class="portal-sub">Prep & practice for final exams with smart AI feedback.</div>
+            </div>
+        </div>
+        <a href="#" onclick="wakeAndOpen('https://ezrelyn-ai-proctor-system.onrender.com')" class="blue-btn">
+            🧠 Launch Ezrelyn Proctor AI
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="section-tag">🌟 Navakholo TerraHub Initiative</div>
+        <div style="text-align:center; font-size:11px; color:#94a3b8; margin-bottom:8px;">Created with passion by the student founders & tech leaders:</div>
+        
+        <div class="founders-grid">
+            <div class="founder-card">
+                <img src="ezra.jpg" alt="Ezra Wanyama" class="founder-img">
+                <div class="founder-name">Ezra Wanyama</div>
+                <div class="founder-role">Co-Creator / Lead Dev</div>
+            </div>
+            <div class="founder-card">
+                <img src="brian.jpg" alt="Brian" class="founder-img">
+                <div class="founder-name">Brian</div>
+                <div class="founder-role">Co-Creator / Coordinator</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="quotes-card">
+        <div class="quotes-title">💡 Daily Smartphone Scientist Quote (Rotates Every 1 Min)</div>
+        <div id="quoteDisplay" class="quotes-text">"Motivation is cheap. Action is everything. Build with whatever is in your hands today!"</div>
+    </div>
+
+    <button class="gold-btn" onclick="showCustomModal('Install PWA', 'PWA is ready to install on your home screen! Tap your browser menu (⋮) and select Add to Home Screen.')">
+        📱 Install App to Phone Screen
+    </button>
+
+    <div id="customModal" class="custom-modal">
+        <div class="custom-modal-content">
+            <div id="modalTitle" class="custom-modal-title">Notice</div>
+            <div id="modalText" class="custom-modal-text">Message here...</div>
+            <div id="modalActionContainer" style="margin-top:15px;">
+                <button class="custom-modal-btn" onclick="closeCustomModal()">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="wakeOverlay" class="wake-overlay">
+        <img src="nti-logo.jpg" alt="NTI Pulsing Logo" class="pulse-logo">
+        <div class="wake-title">WAKING UP RENDER ENGINE...</div>
+        <div class="wake-sub">Establishing connection to NTI & Ezrelyn cloud servers. Please hold on! ⚡</div>
+    </div>
+
+    <script>
+        function showCustomModal(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalText').innerText = text;
+            document.getElementById('modalActionContainer').innerHTML = '<button class="custom-modal-btn" onclick="closeCustomModal()">OK</button>';
+            document.getElementById('customModal').classList.add('active');
+        }
+
+        function openEmailModal() {
+            document.getElementById('modalTitle').innerText = "✉️ Contact Navakholo TerraHub";
+            document.getElementById('modalText').innerHTML = "Reach out directly to the founders via official email:<br><br><b style='color:#38bdf8; font-size:14px;'>jm8831451@gmail.com</b>";
+            document.getElementById('modalActionContainer').innerHTML = '<a href="mailto:jm8831451@gmail.com" class="custom-modal-btn" style="text-decoration:none; display:inline-block; margin-right:8px;">Send Email</a> <button class="custom-modal-btn" style="background:#27272a; color:#f8fafc;" onclick="closeCustomModal()">Close</button>';
+            document.getElementById('customModal').classList.add('active');
+        }
+
+        function closeCustomModal() {
+            document.getElementById('customModal').classList.remove('active');
+        }
+
+        function wakeAndOpen(targetUrl) {
+            const overlay = document.getElementById('wakeOverlay');
+            overlay.classList.add('active');
+
+            fetch(targetUrl, { mode: 'no-cors' }).catch(() => {});
+
+            setTimeout(() => {
+                overlay.classList.remove('active');
+                window.open(targetUrl, '_blank');
+            }, 3000);
+        }
+
+        const quotes = [
+            "\"Motivation is cheap. Action is everything. Build with whatever is in your hands today!\" — Ezra Wanyama",
+            "\"You don't need a high-end lab to build global AI. Smartphone science is changing the world from Nakuru!\" 🚀",
+            "\"Pass your goals through the SMART Gate: Specific, Measurable, Achievable, Relevant, and Time-bound.\" 🎯",
+            "\"From Fan To Builder, From Idea To Reality. Education should never be a privilege; it's a fundamental right!\" 💡",
+            "\"Zero History Architecture ensures secure, uncompromised, and persistent proctoring integrity for every student.\" 🛡️"
+        ];
+        
+        let currentQuoteIndex = 0;
+        function rotateQuotes() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+            const quoteEl = document.getElementById('quoteDisplay');
+            quoteEl.style.opacity = 0;
+            setTimeout(() => {
+                quoteEl.innerText = quotes[currentQuoteIndex];
+                quoteEl.style.opacity = 1;
+            }, 500);
+        }
+
+        setInterval(rotateQuotes, 60000);
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => console.log('NTI Hub SW registered for GitHub Pages!', reg.scope));
+            });
+        }
+    </script>
+</body>
+</html>
